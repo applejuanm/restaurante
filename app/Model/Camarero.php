@@ -33,5 +33,15 @@
                 )
             ),
         );
+        //creamos a la asociacion 'muchas mesas' a un camarero
+        public $hasMany = array(
+            'Mesa' => array(
+                'className' => 'Mesa',
+                'foreignKey' => 'camarero_id',
+                'conditions' => '',
+                'order' => 'Mesa.serie DESC',
+                'depend' => false
+            )
+        );
     }
 ?>
