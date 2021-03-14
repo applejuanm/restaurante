@@ -5,6 +5,7 @@
         public $components = array('Flash', 'RequestHandler');
           //usamos helpers para importar etiquetas helpers
         //son ayudantes para hacer formularios,Javascript
+        //Time es para formatos de fechas
 	   public $helpers = array('Html', 'Form', 'Time', 'Js');
 
     
@@ -48,6 +49,55 @@
 
                 }
             }
+            //editamos nuestro camarero apuntando al id
+            public function editar($id = null){
+                //no encuentra el id
+                if(!$id){
+                    throw new NotFoundException("Datos invalidos");
+                }
+
+                //metodo findById que nos mande el id seleccionado
+                $camarero = $this -> Camarero -> findById($id);
+                if(!$camarero){
+                    throw new NotFoundException("El camarero no ha sido encontrado");
+                    
+            }
+            if($this->request->is('post','put')){
+                //el contenido del id lo vamos hacer igual
+                //a lo que nos rescate el modelo
+                //dependiendo del id coincidiendo el id del camarero 
+                //con el de la BBDD
+                $this->Camarero->id = $id;
+                //almacenamos los datos con request data
+                if($this->Camarero->save($this->request->data)){
+                    $this->Flash->success('El camarero ha sido modificado');
+                    //si completa todo nos redirige al indice
+                    return $this->redirect(array('action' => 'index'));
+                }
+            //si no ha pasado la validacion
+            $this->Flash->set('El registro no pudo ser modificado');
+            }
+            //si no encuentra ninguna peticion del formulario de edicio
+            //lo pone en la variable camarero, si no exite pues no carga los datos 
+            //del camarero en concreto que le hemos pasado el Id
+            if(!$this->request->data){
+                $this->request->data = $camarero;
+            }
+
+        }
+        //funcion de eliminar por id mediante excepcion
+        public function eliminar($id = null){
+            if($this->request->is('get')) {
+                //esto sirve para desde fuera no eliminar
+                throw new MethodNotAllowedException("Incorrecto");
+                
+            }
+            if($this->Camarero->delete($id)){
+                $this->Flash->success('El camarero ha sido eliminado');
+                return $this->redirect(array('action' => 'index'));
+            }
+            
+        }
     }
     
 ?>

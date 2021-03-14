@@ -6,7 +6,7 @@
     echo $this->Form->input('dni');
     echo $this->Form->input('nombre');
     echo $this->Form->input('apellido');
-    echo $this->Form->input('telefono');
+    echo $this->Form->input('telefono',array( 'type' => 'number'));
     echo $this->Form->end('Crear Camarero');
 
 ?>

@@ -11,7 +11,11 @@
                 'numeric' => array(
                     'rule' => 'numeric',
                     'message' => 'solo numeros'
-                )
+                ),
+                'unique' => array(
+                    'rule' => 'isUnique',
+                    'message' => 'El dni ya se encuentra en nuestra base de datos'
+                ),
             ),
             'nombre' => array(
                 'rule' => 'notBlank'
