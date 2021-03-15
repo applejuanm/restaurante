@@ -45,7 +45,7 @@
                         return $this->redirect(array('action' => 'index'));
                     }
                     //si no ha pasado la validacion
-                    $this->Flash->set('no se puedo crear el camarero');
+                    $this->Flash->set('no se pudo crear el camarero');
 
                 }
             }

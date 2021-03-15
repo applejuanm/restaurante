@@ -2,6 +2,8 @@
     /**Aqui hacemos la validacion del formulario de creacion de camareros */
     /**Toda validacion se hace desde el modelo */
     Class Camarero extends AppModel {
+        //campo virtual que no se guarda, solo para mostrar el nombre del camarero
+        public $virtualFields = array('nombre_completo' => 'CONCAT(Camarero.nombre, " " , Camarero.apellido)');
 
         public $validate = array(
             'dni' => array(
