@@ -1,4 +1,10 @@
-A restaurant app that you providers food orders.
+# Restauran app CakePHP project
+
+**This proyect is in development**. Please update your dependencies, some packages are deprecated.
+
+# CakePHP App
+
+Web application based on TPV restaurant.
 
 # CakePHP
 
