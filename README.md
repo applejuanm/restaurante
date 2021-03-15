@@ -1,4 +1,4 @@
-# Restauran app CakePHP project
+# Restaurant app CakePHP project
 
 **This proyect is in development**. Please update your dependencies, some packages are deprecated.
 
